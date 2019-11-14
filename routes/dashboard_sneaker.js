@@ -35,7 +35,10 @@ router.post("/prod-add", (req, res) => {
 module.exports = router;
 
 router.get("/prod-manage", (req, res) => {
-    res.render("products_manage")
+  sneakerModel.find()
+  .then(dbRes => {
+    res.render("products_manage",{sneakers:dbRes})
+  })
 });
 
 router.get("/prod-edit", (req, res) => {
