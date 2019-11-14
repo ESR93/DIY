@@ -6,6 +6,7 @@ const sneakerSchema = new Schema({
   name: String,
   ref: String,
   sizes: Number,
+  descripiton: String,
   price: Number,
   category: ["men", "woment", "kids"],
   id_tags: {
