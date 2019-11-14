@@ -6,13 +6,20 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
-router.get(`/sneakers/men`, (req, res) => {
+function switchView(cat, req, res) {
   sneakerModel
-  .find({ category: "men"})
-  .populate("tag")
-  .then(dbRes => {
-    res.render("products", { sneakers: dbRes, tags: dbRes});
-  })
+    .find({ category: cat })
+    .populate("tag")
+    .then(dbRes => {
+      res.render("products", { sneakers: dbRes, tags: dbRes });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+router.get(`/sneakers/men`, (req, res) => {
+  switchView("men", req, res);
 });
 
 router.get("/one-product/:id", (req, res) => {
