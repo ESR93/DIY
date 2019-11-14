@@ -1,3 +1,4 @@
+{{#if isLoggedIn}}
 <div class="big-container product-manage-wrapper flexed-item">
   <form action="/prod-add" method="post" class="add-product-form" enctype="multiparty/form-data">
     {{#if msg}}
@@ -61,3 +62,6 @@
     <button id="btn_new_tag" class="button-primary add-category-btn">Create this category</button>
   </div>
 </div>
+{{else}}
+<div>You have to be logged in!</div>
+{{/if}}

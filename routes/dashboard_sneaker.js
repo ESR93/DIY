@@ -37,3 +37,7 @@ module.exports = router;
 router.get("/prod-manage", (req, res) => {
     res.render("products_manage")
 });
+
+router.get("/prod-edit", (req, res) => {
+  res.render("product_edit")
+});

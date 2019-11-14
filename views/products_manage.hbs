@@ -1,3 +1,4 @@
+{{#if isLoggedIn}}
 <div class="big-container manage-products-wrapper">
   <h3 class="manage-products-title">Manage your Sneakers catalog</h3>
   <table class="product-manage-table">
@@ -26,3 +27,6 @@
     </tbody>
   </table>
 </div>
+{{else}}
+<div>You have to be logged in!</div>
+{{/if}}

@@ -1,3 +1,4 @@
+{{#if isLoggedIn}}
 <div class="big-container product-manage-wrapper flexed-item">
   <form method="pasta" action="/prod-edit/{{sneaker._id}}" class="edit-product-form">
     <h3 class="form-title"> Edit Sneaker</h3>
@@ -37,3 +38,6 @@
     <button class="button-primary add-sneacker-btn">Edit this sneaker</button>
   </form>
 </div>
+{{else}}
+<div>You have to be logged in!</div>
+{{/if}}
