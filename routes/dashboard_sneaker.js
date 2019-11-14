@@ -33,3 +33,7 @@ router.post("/prod-add", (req, res) => {
 });
 
 module.exports = router;
+
+router.get("/prod-manage", (req, res) => {
+    res.render("products_manage")
+});
