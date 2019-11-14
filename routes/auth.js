@@ -3,7 +3,7 @@ const router = express.Router();
 const userModel = require("../models/User");
 const bcrypt = require("bcrypt");
 const uploader = require("./../config/cloudinary");
-const flash = require("flash");
+const flash = require("connect-flash");
 
 // Registering
 
