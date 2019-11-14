@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const userModel = require("../models/User");
 const bcrypt = require("bcrypt");
-const uploader = require("./../config/cloudinary");
-const flash = require("express-flash");
 
 // Registering
 
@@ -41,8 +39,8 @@ router.post("/signin", (req, res, next) => {
 
   if (!user.email || !user.password) {
     // one or more field is missing
-    console.log(req.flash);
-    req.flash("error", "wrong credentials");
+    // console.log(req.flash);
+    // req.flash("error", "wrong credentials");
     return res.redirect("/signin");
   }
 
@@ -51,15 +49,16 @@ router.post("/signin", (req, res, next) => {
     .then(dbRes => {
       if (!dbRes) {
         // no user found with this email
-        req.flash("error", "wrong credentials");
+        // req.flash("error", "wrong credentials");
         return res.redirect("/signin");
       }
       // user has been found in DB !
       if (bcrypt.compareSync(user.password, dbRes.password)) {
         // encryption says : password match success
-        req.flash("success", `welcome ${dbRes.email}`);
+        // req.flash("success", `welcome ${dbRes.email}`);
+        console.log(req.session)
         req.session.currentUser = dbRes; // user is now in session... until session.destroy
-        return res.redirect("/products");
+        return res.redirect("/");
       } else {
         // encryption says : password match failde
         return res.redirect("/signin");
@@ -67,7 +66,7 @@ router.post("/signin", (req, res, next) => {
     })
     .catch(dbErr => {
       console.log(dbErr);
-      req.flash("error", "system error ><*");
+      // req.flash("error", "system error ><*");
       res.redirect("/signin");
     });
 });

@@ -12,6 +12,7 @@ const session = require("express-session");
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo")(session);
 const cookieParser = require("cookie-parser");
+// const flash = require("flash");
 
 
 // initial config
@@ -22,6 +23,7 @@ hbs.registerPartials(__dirname + "/views/partials");
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cookieParser());
+// app.use(flash());
 
 
 // SESSION SETUP
