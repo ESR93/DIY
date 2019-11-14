@@ -1,11 +1,4 @@
 const express = require("express");
-const router = new express.Router();
-module.exports = router;
-
-
-// +++++++++++++++++++++++++++++++
-
-const express = require("express");
 const router = express.Router();
 const userModel = require("../models/User");
 const bcrypt = require("bcrypt");
