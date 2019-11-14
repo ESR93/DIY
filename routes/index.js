@@ -5,7 +5,7 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
-router.get("/sneakers/:id", (req, res) => {
+router.get("/sneakers", (req, res) => {
   res.render("products");
 });
 

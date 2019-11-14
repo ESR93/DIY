@@ -14,5 +14,5 @@ const sneakerSchema = new Schema({
   }
 });
 
-const sneakerModel = mongoose.Model("Sneaker", sneakerSchema);
+const sneakerModel = mongoose.model("Sneaker", sneakerSchema);
 module.exports = sneakerModel;
