@@ -9,6 +9,7 @@ const sneakerSchema = new Schema({
   descripiton: String,
   price: Number,
   category: ["men", "woment", "kids"],
+  image: String,
   id_tags: {
     type: Schema.Types.ObjectId,
     ref: "Tag"
