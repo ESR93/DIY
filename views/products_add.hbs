@@ -44,7 +44,9 @@
 
     <div class="form-item-wrapper flexed-item">
       <label for="tags" class="label">Tags</label>
+      {{#each tag}}
       {{> form_tags_select}}
+      {{/each}}
     </div>
     <button class="button-primary add-sneacker-btn">Add to collection</button>
   </form>

@@ -76,10 +76,13 @@ app.use(eraseSessionMessage());
 
 // Getting/Using router(s)
 const basePageRouter = require("./routes/index");
-const authRouter = require("./routes/auth.js");
+const authRouter = require("./routes/auth");
+const dashboardRouter = require("./routes/dashboard_sneaker");
+
 
 app.use("/", basePageRouter);
 app.use("/", authRouter);
+app.use("/", dashboardRouter);
 
 
 console.log(process.env.PORT)
