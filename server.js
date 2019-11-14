@@ -1,7 +1,7 @@
 console.log("node says : waxOn/waxOff !");
 require("dotenv").config();
 require("./config/mongodb"); // database initial setup
-// require("./utils/helpers-hbs"); // utils for hbs templates
+require("./utils/helpers-hbs"); // utils for hbs templates
 
 
 // base dependencies

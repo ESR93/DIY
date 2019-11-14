@@ -10,7 +10,7 @@ const sneakerSchema = new Schema({
   category: ["men", "woment", "kids"],
   id_tags: {
     type: Schema.Types.ObjectId,
-    ref: "Tags"
+    ref: "Tag"
   }
 });
 
