@@ -54,6 +54,27 @@ router.get("/prod-manage", (req, res) => {
     res.render("products_manage", { sneakers: dbRes });
   });
 });
+router.post("/product-edit/:id", (req, res) => {
+  const sneak = req.body;
+  console.log(sneak.id_tags);
+  const newSneaker = {
+    name: sneak.name,
+    ref: sneak.ref,
+    sizes: sneak.size,
+    description: sneak.description,
+    price: sneak.price,
+    category: sneak.category,
+    id_tags: sneak.id_tags
+  };
+  sneakerModel
+    .findByIdAndUpdate(req.params.id, newSneaker)
+    .then(dbRes => {
+      res.redirect("/prod-manage");
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
 
 router.get("/product-edit/:id", (req, res) => {
   const sneaker = sneakerModel.findOne({ _id: req.params.id });
@@ -62,4 +83,27 @@ router.get("/product-edit/:id", (req, res) => {
     console.log(dbRes);
     res.render("product_edit", { sneaker: dbRes[0], tags: dbRes[1] });
   });
+});
+
+// router.post("/product-edit/:id", (req, res) => {
+//   sneakerModel
+//     .findByIdAndUpdate(req.params.id)
+//     .then(dbRes => {
+//       res.redirect("/prod-manage");
+//     })
+//     .catch(err => {
+//       console.log(err);
+//     });
+// });
+
+router.get("/prod-delete/:id", (req, res) => {
+  sneakerModel
+    .findByIdAndDelete(req.params.id)
+    .then(dbRes => {
+      res.redirect("/prod-manage");
+      // console.log(dbRes);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 });
