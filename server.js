@@ -71,9 +71,14 @@ function eraseSessionMessage() {
 app.use(checkloginStatus);
 app.use(eraseSessionMessage());
 
+
 // Getting/Using router(s)
 const basePageRouter = require("./routes/index");
+const authRouter = require("./routes/auth.js");
+
 app.use("/", basePageRouter);
+server.use("/", authRouter);
+
 
 console.log(process.env.PORT)
 const listener = app.listen(process.env.PORT, () => {
