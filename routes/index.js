@@ -23,7 +23,12 @@ router.get(`/sneakers/men`, (req, res) => {
 });
 
 router.get("/one-product/:id", (req, res) => {
-  res.render("one_products");
+  sneakerModel
+  .findOne({ _id: req.params.id })
+  .then(dbRes => {
+    res.render("one_product",{sneaker:dbRes});
+  })
+  .catch(dbErr => res.send(dbErr));
 });
 
 router.get("/signup", (req, res) => {

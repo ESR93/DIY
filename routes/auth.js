@@ -7,9 +7,9 @@ const flash = require("express-flash");
 
 // Registering
 
-router.post("/signup", uploader.single("avatar"), (req, res, next) => {
+router.post("/signup", (req, res, next) => {
   const user = req.body; // req.body contains the submited informations (out of post request)
-
+  console.log(user)
   if (req.file) user.avatar = req.file.secure_url;
 
   if (!user.email || !user.password) {
@@ -41,6 +41,7 @@ router.post("/signin", (req, res, next) => {
 
   if (!user.email || !user.password) {
     // one or more field is missing
+    console.log(req.flash);
     req.flash("error", "wrong credentials");
     return res.redirect("/signin");
   }
@@ -58,7 +59,7 @@ router.post("/signin", (req, res, next) => {
         // encryption says : password match success
         req.flash("success", `welcome ${dbRes.email}`);
         req.session.currentUser = dbRes; // user is now in session... until session.destroy
-        return res.redirect("/admin");
+        return res.redirect("/products");
       } else {
         // encryption says : password match failde
         return res.redirect("/signin");
