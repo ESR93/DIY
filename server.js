@@ -77,7 +77,7 @@ const basePageRouter = require("./routes/index");
 const authRouter = require("./routes/auth.js");
 
 app.use("/", basePageRouter);
-server.use("/", authRouter);
+app.use("/", authRouter);
 
 
 console.log(process.env.PORT)
