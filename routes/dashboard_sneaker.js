@@ -1,4 +1,10 @@
 const express = require("express"); // import express in this module
-const router = new express.Router(); // create an app sub-module (router)
+const sneakerModel = require("./../models/Sneaker");
+const router = express.Router(); // create an app sub-module (router)
+
+router.get("/prod-add", (req, res) => {
+  console.log(res);
+  res.render("products_add").catch(err => console.log(err));
+});
 
 module.exports = router;
