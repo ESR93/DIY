@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const sneakerSchema = new Schema({
   name: String,
   ref: String,
+  sizes: Number,
   price: Number,
   category: ["men", "woment", "kids"],
   id_tags: {
