@@ -3,11 +3,11 @@ const router = express.Router();
 const userModel = require("../models/User");
 const bcrypt = require("bcrypt");
 const uploader = require("./../config/cloudinary");
+const flash = require("flash");
 
 // Registering
 
 router.post("/signup", uploader.single("avatar"), (req, res, next) => {
-  
   const user = req.body; // req.body contains the submited informations (out of post request)
 
   if (req.file) user.avatar = req.file.secure_url;
@@ -19,9 +19,8 @@ router.post("/signup", uploader.single("avatar"), (req, res, next) => {
     userModel
       .findOne({ email: user.email })
       .then(dbRes => {
+        if (dbRes) return res.redirect("/signup"); //
 
-        if (dbRes) return res.redirect("/signup"); // 
-        
         const salt = bcrypt.genSaltSync(10); // cryptography librairie
         const hashed = bcrypt.hashSync(user.password, salt); // generates a secured random hashed password
         user.password = hashed; // new user is ready for db
@@ -68,7 +67,7 @@ router.post("/signin", (req, res, next) => {
     .catch(dbErr => {
       console.log(dbErr);
       req.flash("error", "system error ><*");
-      res.redirect("/signin")
+      res.redirect("/signin");
     });
 });
 
