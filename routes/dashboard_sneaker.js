@@ -4,6 +4,7 @@ const router = express.Router(); // create an app sub-module (router)
 
 router.get("/prod-add", (req, res) => {
   console.log(res);
+  sneakerModel;
   res.render("products_add").catch(err => console.log(err));
 });
 
