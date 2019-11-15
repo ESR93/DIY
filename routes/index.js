@@ -2,10 +2,12 @@ const express = require("express");
 const sneakerModel = require("./../models/Sneaker");
 const tagModel = require("./../models/Tag");
 const router = express.Router();
+const axios = require("axios");
 
 router.get("/", (req, res) => {
   res.render("index");
 });
+
 router.get("/sneakers/collection", (req, res) => {
   const sneaker = sneakerModel.find();
   const tags = tagModel.find();
@@ -47,17 +49,6 @@ router.get("/sneakers/women", (req, res) => {
 router.get("/sneakers/kids", (req, res) => {
   switchView("kids", req, res);
 });
-
-// router.get("/sneakers/collection", (req, res) => {
-//   sneakerModel
-//     .find()
-//     .then(dbRes => {
-//       res.render("products", { sneakers: dbRes });
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-// });
 
 router.get("/one-product/:id", (req, res) => {
   sneakerModel
