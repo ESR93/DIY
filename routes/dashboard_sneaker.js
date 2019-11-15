@@ -48,6 +48,7 @@ router.post("/prod-add", uploader.single("image"), (req, res) => {
 
 router.get("/prod-manage", (req, res) => {
   sneakerModel.find().then(dbRes => {
+    console.log(dbRes);
     res.render("products_manage", { sneakers: dbRes });
   });
 });
