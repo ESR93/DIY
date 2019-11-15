@@ -1,6 +1,6 @@
 {{#if isLoggedIn}}
 <div class="big-container product-manage-wrapper flexed-item">
-  <form action="/prod-add" method="post" class="add-product-form" enctype="multiparty/form-data">
+  <form action="/prod-add" method="post" class="add-product-form" enctype="multipart/form-data">
     {{#if msg}}
     <p class="msg {{msg.statu}}">{{msg.txt}}</p>
     {{/if}}
@@ -30,7 +30,7 @@
     </div>
     <div class="form-item-wrapper flexed-item">
       <label for="sneackerSimg" class="label-price label">Image</label>
-      <input name="img" id="sneackerSimg" type="file" class="sneacker-price input">
+      <input name="image" id="sneackerSimg" type="file" class="sneacker-price input">
     </div>
     <div class="form-item-wrapper flexed-item">
       <label for="category" class="label-main-cat label">Main category</label>
@@ -57,7 +57,7 @@
         <label for="category-name" class="category-name label">Sneaker tag</label>
         <input name="label" id="new_tag_name" type="text" class="input" placeholder="ex: Gangsta">
       </div>
-      <button id="btn_new_tag" class="button-primary add-category-btn">Create this category</button>
+      <button id="btn_new_tag" class="button-primary add-category-btn">Create this tags</button>
   </div>
   </form>
 </div>
